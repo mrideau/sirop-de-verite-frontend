@@ -10,13 +10,13 @@
       </mat-chip-row>
     }
   </div>
-  <form [formGroup]="form" autocomplete="off" (ngSubmit)="addPlayer(form.value.playerName)">
+  <form [formGroup]="form" autocomplete="off" (ngSubmit)="addPlayer(form.value.playerName)" data-cy="form">
     <formly-form [form]="form" [fields]="fields"/>
-    <button mat-icon-button type="submit">
+    <button mat-icon-button type="submit" data-cy="add">
       <mat-icon>add</mat-icon>
     </button>
   </form>
-  <button mat-icon-button type="submit" routerLink="/decks">
+  <button mat-icon-button type="submit" routerLink="/decks" data-cy="submit">
     <mat-icon>arrow_right_alt</mat-icon>
   </button>
 </div>

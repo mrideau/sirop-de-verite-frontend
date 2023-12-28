@@ -1,9 +1,9 @@
 import { Component, inject, Input } from '@angular/core';
-import { Decks } from 'shared';
 import { AppService } from '../../app.service';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
+import { Decks } from '@sirop-de-verite-shared';
 
 @Component({
   selector: 'app-deck-list',

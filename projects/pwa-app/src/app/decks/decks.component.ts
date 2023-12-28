@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Decks } from 'shared';
 import { DecksService } from './decks.service';
 import { AsyncPipe } from '@angular/common';
 import { DeckListComponent } from './deck-list/deck-list.component';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { Decks } from '@sirop-de-verite-shared';
 
 @Component({
   selector: 'app-decks',

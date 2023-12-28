@@ -8,7 +8,7 @@ import { CardComponent } from './card/card.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { Card } from 'shared';
+import { Card } from '@sirop-de-verite-shared';
 
 @Component({
   selector: 'app-play',

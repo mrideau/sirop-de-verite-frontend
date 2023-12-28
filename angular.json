@@ -97,6 +97,39 @@
             ],
             "scripts": []
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "back-office:serve",
+            "configFile": "projects/back-office/cypress.config.js"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "back-office:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false,
+            "configFile": "projects/back-office/cypress.config.js"
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "back-office:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "back-office:serve:production"
+            }
+          }
         }
       }
     },
@@ -165,6 +198,9 @@
               "buildTarget": "pwa-app:build:development"
             }
           },
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
@@ -191,8 +227,47 @@
             ],
             "scripts": []
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "pwa-app:serve",
+            "configFile": "projects/pwa-app/cypress.config.js"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pwa-app:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false,
+            "configFile": "projects/pwa-app/cypress.config.js"
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "pwa-app:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pwa-app:serve:production"
+            }
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@cypress/schematic",
+      "@schematics/angular"
+    ]
   }
 }

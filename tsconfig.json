@@ -15,9 +15,10 @@
     "declaration": false,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "baseUrl": "./projects",
     "paths": {
-      "shared": [
-        "./dist/shared"
+      "@sirop-de-verite-shared": [
+        "shared/src/public-api.ts"
       ]
     },
     "importHelpers": true,

@@ -1,4 +1,4 @@
-import { Paginated } from 'shared';
+import { Paginated } from '@sirop-de-verite-shared';
 
 export interface DeckData {
   name: string;
