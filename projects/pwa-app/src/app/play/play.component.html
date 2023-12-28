@@ -1,0 +1,15 @@
+<button class="back-button" mat-icon-button color="primary" routerLink="/home">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+
+@if (($currentPlayer | async); as player) {
+  <span class="mat-headline-5 player-name">{{ player.name | uppercase }}</span>
+}
+
+<div class="cards-list">
+  @if (($cards | async); as cards) {
+    @for(card of cards; track card.id) {
+      <app-card (click)="selectCard(card)">{{ card.content }}</app-card>
+    }
+  }
+</div>

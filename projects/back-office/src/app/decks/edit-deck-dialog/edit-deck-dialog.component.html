@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Modifier une carte</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <formly-form [form]="form" [fields]="fields" [model]="deck"/>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button mat-dialog-close>Annuler</button>
+  <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="updateDeck(form.getRawValue())">Enregistrer</button>
+</div>

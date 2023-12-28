@@ -1,0 +1,26 @@
+<h1>Cartes</h1>
+<div class="table-header">
+  <button mat-flat-button color="primary" (click)="openCreateCardDialog()">Nouvelle Carte</button>
+</div>
+<table mat-table [dataSource]="(dataSource$ | async)!">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Carte</th>
+    <td mat-cell *matCellDef="let card"> {{ card.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let card" style="width: 1%; white-space: nowrap;">
+      <button mat-icon-button color="secondary" (click)="openEditCardDialog(card)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="openDeleteCardDialog(card)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator hidePageSize showFirstLastButtons [pageSizeOptions]="[10]" />

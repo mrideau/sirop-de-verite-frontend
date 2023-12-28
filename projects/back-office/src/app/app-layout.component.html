@@ -1,0 +1,25 @@
+<mat-toolbar class="toolbar">
+  <a routerLink="/">
+    <img class="toolbar-logo" src="assets/logo.png" alt="Logo Sirop de Verité">
+  </a>
+  <nav class="nav">
+    <ul class="nav-list">
+      <li>
+        <a mat-button routerLink="decks">Decks</a>
+      </li>
+      <li>
+        <a mat-button routerLink="cards">Cartes</a>
+      </li>
+      <li>
+        <a mat-button routerLink="stats">Statistiques</a>
+      </li>
+    </ul>
+  </nav>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+<main class="main-content">
+  <router-outlet/>
+</main>

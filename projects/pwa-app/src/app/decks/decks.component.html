@@ -1,0 +1,6 @@
+<button class="back-button" mat-icon-button color="primary" routerLink="/home">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+<h1 class="title">On joue comment ?</h1>
+<app-deck-list [decks]="(decks$ | async)!"/>
+<button class="play-button" mat-flat-button color="primary" routerLink="/flags">Suivant</button>

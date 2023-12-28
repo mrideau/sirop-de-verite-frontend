@@ -1,0 +1,22 @@
+<img src="assets/logo.png" alt="Logo" class="logo">
+<div class="fixed-container">
+  <div class="players-list">
+    @for (player of players.values();track player;let index = $index) {
+      <mat-chip-row color="primary" (removed)="deletePlayer(index)">
+        {{ player.name }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    }
+  </div>
+  <form [formGroup]="form" autocomplete="off" (ngSubmit)="addPlayer(form.value.playerName)">
+    <formly-form [form]="form" [fields]="fields"/>
+    <button mat-icon-button type="submit">
+      <mat-icon>add</mat-icon>
+    </button>
+  </form>
+  <button mat-icon-button type="submit" routerLink="/decks">
+    <mat-icon>arrow_right_alt</mat-icon>
+  </button>
+</div>
