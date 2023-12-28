@@ -97,6 +97,18 @@
             ],
             "scripts": []
           }
+        },
+        "e2e": {
+          "builder": "@puppeteer/ng-schematics:puppeteer",
+          "options": {
+            "devServerTarget": "back-office:serve",
+            "testRunner": "jest"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "back-office:serve:production"
+            }
+          }
         }
       }
     },
@@ -190,6 +202,18 @@
               "projects/pwa-app/src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "e2e": {
+          "builder": "@puppeteer/ng-schematics:puppeteer",
+          "options": {
+            "devServerTarget": "pwa-app:serve",
+            "testRunner": "jest"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "pwa-app:serve:production"
+            }
           }
         }
       }
