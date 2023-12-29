@@ -7,12 +7,18 @@
 
 .login-container {
   //margin: 0 auto;
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  //gap: 1rem;
   width: max(200px, 50%);
 }
 
 .logo {
   height: 128px;
   margin: 0 auto;
-  //margin-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+button[type=submit] {
+  width: 100%;
 }
