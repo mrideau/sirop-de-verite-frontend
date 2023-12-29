@@ -1,25 +1,42 @@
 <mat-toolbar class="toolbar">
+  @if ((isSmallScreen$ | async)?.matches) {
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  }
   <a routerLink="/">
     <img class="toolbar-logo" src="assets/logo.png" alt="Logo Sirop de Verité">
   </a>
-  <nav class="nav">
-    <ul class="nav-list">
-      <li>
-        <a mat-button routerLink="decks">Decks</a>
-      </li>
-      <li>
-        <a mat-button routerLink="cards">Cartes</a>
-      </li>
-      <li>
-        <a mat-button routerLink="stats">Statistiques</a>
-      </li>
-    </ul>
-  </nav>
+  @if(!(isSmallScreen$ | async)?.matches) {
+    <nav class="nav">
+      <ul class="nav-list">
+        <li>
+          <a mat-button routerLink="decks">Decks</a>
+        </li>
+        <li>
+          <a mat-button routerLink="cards">Cartes</a>
+        </li>
+        <li>
+          <a mat-button routerLink="stats">Statistiques</a>
+        </li>
+      </ul>
+    </nav>
+  }
   <span class="spacer"></span>
   <button mat-icon-button (click)="logout()">
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>
-<main class="main-content">
-  <router-outlet/>
-</main>
+<mat-sidenav-container class="sidenav">
+  <mat-sidenav #snav [mode]="(isSmallScreen$ | async)?.matches ? 'over' : 'side'"
+               [fixedInViewport]="(isSmallScreen$ | async)?.matches" fixedTopGap="56">
+    <mat-list>
+      <a mat-list-item routerLink="decks">Decks</a>
+      <a mat-list-item routerLink="cards">Cartes</a>
+      <a mat-list-item routerLink="stats">Statistiques</a>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-content">
+    <router-outlet/>
+  </mat-sidenav-content>
+</mat-sidenav-container>
