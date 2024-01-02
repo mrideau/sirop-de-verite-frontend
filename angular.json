@@ -133,34 +133,34 @@
         }
       }
     },
-    "pwa-app": {
+    "game-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/pwa-app",
-      "sourceRoot": "projects/pwa-app/src",
+      "root": "projects/game-app",
+      "sourceRoot": "projects/game-app/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/pwa-app",
-            "index": "projects/pwa-app/src/index.html",
-            "browser": "projects/pwa-app/src/main.ts",
+            "outputPath": "dist/game-app",
+            "index": "projects/game-app/src/index.html",
+            "browser": "projects/game-app/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "projects/pwa-app/tsconfig.app.json",
+            "tsConfig": "projects/game-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/pwa-app/src/favicon.ico",
-              "projects/pwa-app/src/assets"
+              "projects/game-app/src/favicon.ico",
+              "projects/game-app/src/assets"
             ],
             "styles": [
-              "projects/pwa-app/src/styles.scss"
+              "projects/game-app/src/styles.scss"
             ],
             "scripts": []
           },
@@ -192,10 +192,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "pwa-app:build:production"
+              "buildTarget": "game-app:build:production"
             },
             "development": {
-              "buildTarget": "pwa-app:build:development"
+              "buildTarget": "game-app:build:development"
             }
           },
           "options": {
@@ -206,7 +206,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "pwa-app:build"
+            "buildTarget": "game-app:build"
           }
         },
         "test": {
@@ -216,14 +216,14 @@
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "projects/pwa-app/tsconfig.spec.json",
+            "tsConfig": "projects/game-app/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/pwa-app/src/favicon.ico",
-              "projects/pwa-app/src/assets"
+              "projects/game-app/src/favicon.ico",
+              "projects/game-app/src/assets"
             ],
             "styles": [
-              "projects/pwa-app/src/styles.scss"
+              "projects/game-app/src/styles.scss"
             ],
             "scripts": []
           }
@@ -231,12 +231,12 @@
         "cypress-run": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "pwa-app:serve",
-            "configFile": "projects/pwa-app/cypress.config.js"
+            "devServerTarget": "game-app:serve",
+            "configFile": "projects/game-app/cypress.config.ts"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "pwa-app:serve:production"
+              "devServerTarget": "game-app:serve:production"
             }
           }
         },
@@ -245,19 +245,20 @@
           "options": {
             "watch": true,
             "headless": false,
-            "configFile": "projects/pwa-app/cypress.config.js"
+            "configFile": "projects/game-app/cypress.config.ts"
           }
         },
         "e2e": {
           "builder": "@cypress/schematic:cypress",
           "options": {
-            "devServerTarget": "pwa-app:serve",
+            "devServerTarget": "game-app:serve",
             "watch": true,
-            "headless": false
+            "headless": false,
+            "project": "projects/game-app"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "pwa-app:serve:production"
+              "devServerTarget": "game-app:serve:production"
             }
           }
         }
