@@ -1,0 +1,26 @@
+<img src="assets/logo.png" alt="Logo" class="logo">
+<div class="fixed-container">
+  <div class="players-list">
+    @for (player of players.values();track player;let index = $index) {
+      <mat-chip-row color="primary" (removed)="deletePlayer(index)">
+        {{ player.name }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    }
+  </div>
+  <form class="player-name-form" (ngSubmit)="addPlayer(playerName)" autocomplete="off">
+    <mat-form-field appearance="outline">
+      <input matInput type="text" placeholder="Nom du joueur" [(ngModel)]="playerName" name="player-name">
+      <div matSuffix class="actions-list">
+        <button mat-mini-fab color="accent" type="submit" data-cy="add">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" type="submit" routerLink="/decks" data-cy="submit" [disabled]="players.length < 2">
+          <mat-icon>arrow_right_alt</mat-icon>
+        </button>
+      </div>
+    </mat-form-field>
+  </form>
+</div>

@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +21,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatButtonModule,
     MatIconModule,
     MatChipsModule,
+    MatInputModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -27,19 +29,16 @@ import { MatChipsModule } from '@angular/material/chips';
 export class HomeComponent {
   protected readonly appService: AppService = inject(AppService);
 
-  protected readonly form: FormGroup = new FormGroup({});
-  protected readonly fields: FormlyFieldConfig[] = [
-    {
-      key: 'playerName',
-      type: 'input',
-    },
-  ];
+  protected playerName = '';
 
   protected players = this.appService.players;
 
   addPlayer(playerName: string): void {
+    if (playerName.length === 0) {
+      return;
+    }
     this.appService.players.push({ name: playerName, noAlcohol: false });
-    this.form.reset();
+    this.playerName = '';
   }
 
   deletePlayer(playerIndex: number): void {
