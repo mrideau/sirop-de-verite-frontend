@@ -2,7 +2,11 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideHttpClient, withXsrfConfiguration } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptors,
+  withXsrfConfiguration,
+} from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
@@ -11,6 +15,8 @@ import {
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
   MatFormFieldDefaultOptions,
 } from '@angular/material/form-field';
+import { apiUrlInterceptor } from '@sirop-de-verite-shared';
+import { environment } from '../../../game-app/src/environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,6 +26,7 @@ export const appConfig: ApplicationConfig = {
         cookieName: 'csrftoken',
         headerName: 'X-CSRFToken',
       }),
+      withInterceptors([apiUrlInterceptor(environment.apiUrl)]),
     ),
     provideAnimations(),
     importProvidersFrom(
