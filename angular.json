@@ -53,7 +53,13 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/back-office/src/environments/environment.ts",
+                  "with": "projects/back-office/src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -94,37 +100,70 @@
             ],
             "scripts": []
           }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "back-office:serve",
+            "configFile": "projects/back-office/cypress.config.js"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "back-office:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false,
+            "configFile": "projects/back-office/cypress.config.js"
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "back-office:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "back-office:serve:production"
+            }
+          }
         }
       }
     },
-    "pwa-app": {
+    "game-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/pwa-app",
-      "sourceRoot": "projects/pwa-app/src",
+      "root": "projects/game-app",
+      "sourceRoot": "projects/game-app/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/pwa-app",
-            "index": "projects/pwa-app/src/index.html",
-            "browser": "projects/pwa-app/src/main.ts",
+            "outputPath": "dist/game-app",
+            "index": "projects/game-app/src/index.html",
+            "browser": "projects/game-app/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "projects/pwa-app/tsconfig.app.json",
+            "tsConfig": "projects/game-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/pwa-app/src/favicon.ico",
-              "projects/pwa-app/src/assets"
+              "projects/game-app/src/favicon.ico",
+              "projects/game-app/src/assets"
             ],
             "styles": [
-              "projects/pwa-app/src/styles.scss"
+              "projects/game-app/src/styles.scss"
             ],
             "scripts": []
           },
@@ -147,7 +186,13 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/game-app/src/environments/environment.ts",
+                  "with": "projects/game-app/src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -156,10 +201,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "pwa-app:build:production"
+              "buildTarget": "game-app:build:production"
             },
             "development": {
-              "buildTarget": "pwa-app:build:development"
+              "buildTarget": "game-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -167,7 +212,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "pwa-app:build"
+            "buildTarget": "game-app:build"
           }
         },
         "test": {
@@ -177,19 +222,59 @@
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "projects/pwa-app/tsconfig.spec.json",
+            "tsConfig": "projects/game-app/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/pwa-app/src/favicon.ico",
-              "projects/pwa-app/src/assets"
+              "projects/game-app/src/favicon.ico",
+              "projects/game-app/src/assets"
             ],
             "styles": [
-              "projects/pwa-app/src/styles.scss"
+              "projects/game-app/src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "game-app:serve",
+            "configFile": "projects/game-app/cypress.config.ts"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "game-app:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false,
+            "configFile": "projects/game-app/cypress.config.ts"
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "game-app:serve",
+            "watch": true,
+            "headless": false,
+            "project": "projects/game-app"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "game-app:serve:production"
+            }
           }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@cypress/schematic",
+      "@schematics/angular"
+    ]
   }
 }

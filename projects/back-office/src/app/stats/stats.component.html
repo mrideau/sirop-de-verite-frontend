@@ -1,0 +1,11 @@
+<h1>Statistiques</h1>
+<p>Cartes les plus choisies.</p>
+
+<mat-list role="list">
+  @for (stat of (stats$ | async);track stat) {
+    <mat-list-item role="listitem">
+      <span matListItemTitle>{{ stat.card_name }} ({{ stat.total_choices }})</span>
+      <span matListItemLine>{{ stat.card_content }}</span>
+    </mat-list-item>
+  }
+</mat-list>

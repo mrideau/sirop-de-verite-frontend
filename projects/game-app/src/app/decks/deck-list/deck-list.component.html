@@ -1,0 +1,5 @@
+<mat-chip-listbox [multiple]="true" data-cy="deck-list">
+  @for(deck of decks; track deck.id) {
+      <mat-chip-option data-cy="deck-item" [selected]="selectedDecks.includes(deck.id)" (click)="toggleDeck(deck.id)">{{ deck.name }}</mat-chip-option>
+  }
+</mat-chip-listbox>

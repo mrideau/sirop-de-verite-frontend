@@ -15,6 +15,12 @@
     "declaration": false,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "baseUrl": "./projects",
+    "paths": {
+      "@sirop-de-verite-shared": [
+        "shared/src/public-api.ts"
+      ]
+    },
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",

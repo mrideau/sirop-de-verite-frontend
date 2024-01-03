@@ -1,0 +1,21 @@
+:host {
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  width: max(200px, 50%);
+}
+
+.logo {
+  height: 128px;
+  margin: 0 auto 1rem;
+}
+
+button[type=submit] {
+  width: 100%;
+}

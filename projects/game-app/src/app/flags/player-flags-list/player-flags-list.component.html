@@ -1,0 +1,5 @@
+<mat-chip-listbox [multiple]="true">
+  @for(player of players; track player.name) {
+    <mat-chip-option [selected]="player.noAlcohol" (click)="togglePlayer(player)">{{ player.name }}</mat-chip-option>
+  }
+</mat-chip-listbox>

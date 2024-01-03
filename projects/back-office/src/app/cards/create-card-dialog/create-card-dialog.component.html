@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Créer une nouvelle Carte</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <formly-form [form]="form" [fields]="fields" [model]="formData"/>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button mat-dialog-close>Annuler</button>
+  <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="createCard(form.getRawValue())">Créer</button>
+</div>
