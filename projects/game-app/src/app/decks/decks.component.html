@@ -3,4 +3,4 @@
 </button>
 <h1 class="title">On joue comment?</h1>
 <app-deck-list [decks]="(decks$ | async)!"/>
-<button class="play-button" mat-fab extended color="primary" routerLink="/flags" data-cy="next">Suivant</button>
+<button class="play-button" mat-fab extended color="primary" routerLink="/flags" data-cy="next" [disabled]="selectedDecks.length < 1">Suivant</button>
