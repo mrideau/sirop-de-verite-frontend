@@ -100,39 +100,6 @@
             ],
             "scripts": []
           }
-        },
-        "cypress-run": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "devServerTarget": "back-office:serve",
-            "configFile": "projects/back-office/cypress.config.js"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "back-office:serve:production"
-            }
-          }
-        },
-        "cypress-open": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "watch": true,
-            "headless": false,
-            "configFile": "projects/back-office/cypress.config.js"
-          }
-        },
-        "e2e": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "devServerTarget": "back-office:serve",
-            "watch": true,
-            "headless": false
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "back-office:serve:production"
-            }
-          }
         }
       }
     },
@@ -232,40 +199,6 @@
               "projects/game-app/src/styles.scss"
             ],
             "scripts": []
-          }
-        },
-        "cypress-run": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "devServerTarget": "game-app:serve",
-            "configFile": "projects/game-app/cypress.config.ts"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "game-app:serve:production"
-            }
-          }
-        },
-        "cypress-open": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "watch": true,
-            "headless": false,
-            "configFile": "projects/game-app/cypress.config.ts"
-          }
-        },
-        "e2e": {
-          "builder": "@cypress/schematic:cypress",
-          "options": {
-            "devServerTarget": "game-app:serve",
-            "watch": true,
-            "headless": false,
-            "project": "projects/game-app"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "game-app:serve:production"
-            }
           }
         }
       }
