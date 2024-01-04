@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build:back-office": "ng build back-office --configuration production",
-    "build:game-app": "ng build game-app --configuration production",
+    "build:back-office": "ng build shared && ng build back-office --configuration production",
+    "build:game-app": "ng build shared && ng build game-app --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "e2e": "ng e2e"
@@ -41,6 +41,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "prettier": "^3.1.1",
+    "ng-packagr": "^17.0.0",
     "typescript": "~5.2.2",
     "cypress": "latest"
   }

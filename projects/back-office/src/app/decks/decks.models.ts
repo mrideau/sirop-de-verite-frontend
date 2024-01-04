@@ -9,5 +9,3 @@ export interface DeckData {
 export type Deck = DeckData & { id: number };
 
 export type Decks = Deck[];
-
-export type PaginatedDecks = Paginated<Decks>;
