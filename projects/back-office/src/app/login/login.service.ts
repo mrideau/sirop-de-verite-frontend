@@ -10,10 +10,8 @@ export class LoginService {
   private readonly _httpClient: HttpClient = inject(HttpClient);
 
   login$(credentials: Credentials): Observable<void> {
-    return this._httpClient.post<void>(
-      'http://localhost:8000/auth/login/',
-      credentials,
-      { withCredentials: true },
-    );
+    return this._httpClient.post<void>('/api/auth/login/', credentials, {
+      withCredentials: true,
+    });
   }
 }
