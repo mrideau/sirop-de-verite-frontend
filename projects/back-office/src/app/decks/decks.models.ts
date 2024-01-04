@@ -1,5 +1,3 @@
-import { Paginated } from '@sirop-de-verite-shared';
-
 export interface DeckData {
   name: string;
   flags: string[];

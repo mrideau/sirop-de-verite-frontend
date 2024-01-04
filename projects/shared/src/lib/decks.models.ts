@@ -1,5 +1,3 @@
-import { Paginated } from './paginated.model';
-
 export interface DeckData {
   name: string;
 }
