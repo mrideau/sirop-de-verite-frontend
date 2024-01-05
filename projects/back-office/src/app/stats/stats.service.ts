@@ -10,6 +10,6 @@ export class StatsService {
   private readonly _httpClient: HttpClient = inject(HttpClient);
 
   getStats$(): Observable<Stats> {
-    return this._httpClient.get<Stats>('api/choices/');
+    return this._httpClient.get<Stats>('/api/choices/');
   }
 }
