@@ -6,10 +6,10 @@ import {
 
 export const apiUrlInterceptor = (apiUrl: string): HttpInterceptorFn => {
   return (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
-    if (req.url.startsWith('/api')) {
+    if (req.url.startsWith('api')) {
       return next(
         req.clone({
-          url: `${apiUrl}${req.url.replace('/api', '')}`,
+          url: `${apiUrl}${req.url.replace('api', '')}`,
           withCredentials: true,
         }),
       );

@@ -10,6 +10,6 @@ export class DecksService {
   private readonly _httpClient: HttpClient = inject(HttpClient);
 
   decks$(): Observable<Decks> {
-    return this._httpClient.get<Decks>('/api/decks/');
+    return this._httpClient.get<Decks>('api/decks/');
   }
 }
