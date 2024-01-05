@@ -23,6 +23,6 @@ export class AppService {
   }
 
   logout$(): Observable<void> {
-    return this._httpClient.post<void>('api/auth/logout/', {});
+    return this._httpClient.post<void>('/api/auth/logout/', {});
   }
 }
