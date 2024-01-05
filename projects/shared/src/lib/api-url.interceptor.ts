@@ -10,6 +10,7 @@ export const apiUrlInterceptor = (apiUrl: string): HttpInterceptorFn => {
       return next(
         req.clone({
           url: `${apiUrl}${req.url.replace('/api', '')}`,
+          withCredentials: true,
         }),
       );
     }
