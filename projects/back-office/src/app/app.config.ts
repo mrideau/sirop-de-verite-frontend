@@ -16,7 +16,7 @@ import {
   MatFormFieldDefaultOptions,
 } from '@angular/material/form-field';
 import { apiUrlInterceptor } from '@sirop-de-verite-shared';
-import { environment } from '../../../game-app/src/environments/environment';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
