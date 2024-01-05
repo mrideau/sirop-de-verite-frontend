@@ -10,7 +10,7 @@ export class AppService {
   private readonly _httpClient: HttpClient = inject(HttpClient);
 
   getUserInfo$(): Observable<User> {
-    return this._httpClient.get<User>('/api/auth/user/');
+    return this._httpClient.get<User>('api/auth/user/');
   }
 
   isAuthenticated$(): Observable<boolean> {
@@ -23,6 +23,6 @@ export class AppService {
   }
 
   logout$(): Observable<void> {
-    return this._httpClient.post<void>('/api/auth/logout/', {});
+    return this._httpClient.post<void>('api/auth/logout/', {});
   }
 }
