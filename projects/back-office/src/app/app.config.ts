@@ -17,6 +17,10 @@ import {
 } from '@angular/material/form-field';
 import { apiUrlInterceptor } from '@sirop-de-verite-shared';
 import { environment } from '../environments/environment';
+import {
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatSnackBarConfig,
+} from '@angular/material/snack-bar';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -37,6 +41,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline' } as MatFormFieldDefaultOptions,
+    },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: { duration: 2500 } as MatSnackBarConfig,
     },
   ],
 };
