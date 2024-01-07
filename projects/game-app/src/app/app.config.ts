@@ -36,7 +36,7 @@ export const appConfig: ApplicationConfig = {
     ),
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-      useValue: { duration: 3000 } as MatSnackBarConfig,
+      useValue: { duration: 2500 } as MatSnackBarConfig,
     },
   ],
 };
