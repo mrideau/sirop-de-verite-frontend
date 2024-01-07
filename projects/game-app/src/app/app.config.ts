@@ -13,6 +13,10 @@ import {
 } from '@angular/common/http';
 import { apiUrlInterceptor } from '@sirop-de-verite-shared';
 import { environment } from '../environments/environment';
+import {
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatSnackBarConfig,
+} from '@angular/material/snack-bar';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,5 +34,9 @@ export const appConfig: ApplicationConfig = {
       FormlyPresetModule,
       FormlyMaterialModule,
     ),
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: { duration: 3000 } as MatSnackBarConfig,
+    },
   ],
 };

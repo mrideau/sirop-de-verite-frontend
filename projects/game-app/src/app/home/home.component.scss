@@ -14,6 +14,11 @@
   margin: 75px auto;
 }
 
+.fixed-container {
+  width: min(675px, 100%);
+  margin: 0 auto;
+}
+
 .players-list {
   padding: 12px;
   display: flex;

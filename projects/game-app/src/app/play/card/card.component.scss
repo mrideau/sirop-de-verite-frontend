@@ -1,13 +1,14 @@
-:host {
+:host(.card) {
   padding: 24px;
   background-color: #fff;
   border-radius: 12px;
   border: 2px solid #000;
   color: #000;
-  aspect-ratio: 2/3;
+  aspect-ratio: 2.2/3;
   font-family: 'Rubik', sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  flex: 1;
 }
