@@ -6,5 +6,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-flat-button mat-dialog-close>Annuler</button>
-  <button mat-flat-button color="primary" [disabled]="form.invalid" (click)="updateDeck(form.getRawValue())">Enregistrer</button>
+  <button mat-flat-button color="primary" [disabled]="form.invalid || form.disabled" (click)="updateDeck(form.getRawValue())">Enregistrer</button>
 </div>
