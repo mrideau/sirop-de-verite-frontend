@@ -41,10 +41,10 @@ export class PlayComponent implements AfterViewInit {
   );
   protected readonly selectCard$: Subject<Card> = new Subject<Card>();
 
-  ngAfterViewInit(): void {
+  constructor() {
     this.selectCard$
       .pipe(
-        debounceTime(150),
+        debounceTime(250),
         switchMap((card: Card) => this._cardsService.saveChoice(card.id)),
         takeUntilDestroyed(),
       )
@@ -53,7 +53,9 @@ export class PlayComponent implements AfterViewInit {
           this.update();
         },
       });
+  }
 
+  ngAfterViewInit(): void {
     this.update();
   }
 
