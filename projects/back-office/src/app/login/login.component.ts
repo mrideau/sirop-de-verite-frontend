@@ -5,6 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from './login.service';
 import { Credentials } from './login.models';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +18,7 @@ import { Router } from '@angular/router';
 export default class LoginComponent {
   protected readonly loginService: LoginService = inject(LoginService);
   private readonly _router: Router = inject(Router);
+  private readonly _snackbar: MatSnackBar = inject(MatSnackBar);
 
   protected readonly form: FormGroup = new FormGroup({});
   protected readonly fields: FormlyFieldConfig[] = [
@@ -40,8 +43,19 @@ export default class LoginComponent {
   ];
 
   login(credentials: Credentials): void {
-    this.loginService.login$(credentials).subscribe((): void => {
-      this._router.navigate(['']);
+    this.form.disable();
+    this.loginService.login$(credentials).subscribe({
+      next: (): void => {
+        this._router.navigate(['']);
+      },
+      error: (err: HttpErrorResponse): void => {
+        this.form.enable();
+        if (err.status === 400) {
+          this._snackbar.open(
+            "Échec de l'authentification: Les informations fournies sont incorrectes. Veuillez vérifier votre nom d'utilisateur et votre mot de passe, puis réessayez.",
+          );
+        }
+      },
     });
   }
 }
