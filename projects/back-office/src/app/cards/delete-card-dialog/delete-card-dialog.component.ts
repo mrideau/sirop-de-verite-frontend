@@ -23,6 +23,7 @@ export class DeleteCardDialogComponent {
   private readonly _snackBar: MatSnackBar = inject(MatSnackBar);
   private readonly _dialogRef: MatDialogRef<any> = inject(MatDialogRef);
   private readonly _dialogData: { card: Card } = inject(MAT_DIALOG_DATA);
+  protected isLoading = false;
 
   protected readonly card: Card = this._dialogData.card;
 
@@ -31,6 +32,10 @@ export class DeleteCardDialogComponent {
       next: (): void => {
         this._dialogRef.close(true);
         this._snackBar.open('Carte supprimée avec succès!');
+      },
+      error: (): void => {
+        this.isLoading = false;
+        this._snackBar.open('Échec de la suppression. Veuillez réessayer.');
       },
     });
   }

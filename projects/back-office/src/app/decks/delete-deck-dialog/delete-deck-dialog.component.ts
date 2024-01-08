@@ -23,14 +23,20 @@ export class DeleteDeckDialogComponent {
   private readonly _snackBar: MatSnackBar = inject(MatSnackBar);
   private readonly _dialogRef: MatDialogRef<any> = inject(MatDialogRef);
   private readonly _dialogData: { deck: Deck } = inject(MAT_DIALOG_DATA);
+  protected isLoading = false;
 
   protected readonly deck: Deck = this._dialogData.deck;
 
   deleteDeck$(): void {
+    this.isLoading = true;
     this._decksService.deleteDeck$(this.deck.id).subscribe({
       next: (): void => {
         this._dialogRef.close(true);
         this._snackBar.open('Deck supprimé avec succès!');
+      },
+      error: (): void => {
+        this.isLoading = false;
+        this._snackBar.open('Échec de la suppression. Veuillez réessayer.');
       },
     });
   }

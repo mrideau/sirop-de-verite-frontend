@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Supprimer le deck {{ deck.name }}</h1>
 <div mat-dialog-actions>
   <button mat-flat-button mat-dialog-close>Annuler</button>
-  <button mat-flat-button color="warn" (click)="deleteDeck$()">Supprimer</button>
+  <button mat-flat-button color="warn" [disabled]="isLoading" (click)="deleteDeck$()">Supprimer</button>
 </div>

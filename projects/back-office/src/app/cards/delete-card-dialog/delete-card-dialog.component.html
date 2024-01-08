@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Supprimer la carte {{ card.name }}</h1>
 <div mat-dialog-actions>
   <button mat-flat-button mat-dialog-close>Annuler</button>
-  <button mat-flat-button color="warn" (click)="deleteCard$()">Supprimer</button>
+  <button mat-flat-button color="warn" [disabled]="isLoading" (click)="deleteCard$()">Supprimer</button>
 </div>
