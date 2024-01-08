@@ -2,6 +2,6 @@
   <img class="logo" src="assets/logo.png" alt="Logo Sirop de Vérité">
   <form [formGroup]="form" (ngSubmit)="login(form.value)">
     <formly-form [form]="form" [fields]="fields"/>
-    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">Connexion</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid || form.disabled">Connexion</button>
   </form>
 </div>
