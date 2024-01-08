@@ -9,7 +9,7 @@
 <div class="cards-list">
   @if (($cards | async); as cards) {
     @for(card of cards; track card.id) {
-      <app-card (click)="selectCard(card)">{{ card.content }}</app-card>
+      <app-card (click)="selectCard$.next(card)">{{ card.content }}</app-card>
     }
   }
 </div>
