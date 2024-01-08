@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { Card } from '@sirop-de-verite-shared';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-play',
@@ -31,7 +32,6 @@ export class PlayComponent implements AfterViewInit {
 
   protected readonly $currentPlayer: Subject<Player> = new Subject<Player>();
   protected readonly $cards = this.$currentPlayer.pipe(
-    debounceTime(150),
     switchMap((player: Player) => {
       return this._cardsService.randomCards$(
         this._appService.selectedDecks,
@@ -39,8 +39,21 @@ export class PlayComponent implements AfterViewInit {
       );
     }),
   );
+  protected readonly selectCard$: Subject<Card> = new Subject<Card>();
 
   ngAfterViewInit(): void {
+    this.selectCard$
+      .pipe(
+        debounceTime(150),
+        switchMap((card: Card) => this._cardsService.saveChoice(card.id)),
+        takeUntilDestroyed(),
+      )
+      .subscribe({
+        next: (): void => {
+          this.update();
+        },
+      });
+
     this.update();
   }
 
@@ -50,10 +63,5 @@ export class PlayComponent implements AfterViewInit {
     );
     const randomPlayer: Player = this._appService.players[randomPlayerIndex];
     this.$currentPlayer.next(randomPlayer);
-  }
-
-  selectCard(card: Card): void {
-    this._cardsService.saveChoice(card.id).subscribe();
-    this.update();
   }
 }
