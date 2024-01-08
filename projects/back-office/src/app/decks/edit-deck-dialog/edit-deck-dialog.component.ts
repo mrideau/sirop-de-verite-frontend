@@ -46,10 +46,15 @@ export class EditDeckDialogComponent {
   ];
 
   protected updateDeck(data: DeckData): void {
+    this.form.disable();
     this._decksService.updateDeck$(this.deck.id, data).subscribe({
       next: (): void => {
         this._dialogRef.close(true);
         this._snackBar.open('Deck enregistré avec succès!');
+      },
+      error: (): void => {
+        this.form.enable();
+        this._snackBar.open("Échec de l'enregistrement. Veuillez réessayer.");
       },
     });
   }

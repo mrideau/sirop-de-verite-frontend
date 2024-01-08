@@ -54,10 +54,15 @@ export class CreateCardDialogComponent {
   protected formData = {};
 
   protected createCard(data: CardData): void {
+    this.form.disable();
     this._cardsService.createCard$(data).subscribe({
       next: (): void => {
         this._dialogRef.close(true);
         this._snackBar.open('Carte enregistrée avec succès!');
+      },
+      error: (): void => {
+        this.form.enable();
+        this._snackBar.open("Échec de l'enregistrement. Veuillez réessayer.");
       },
     });
   }
