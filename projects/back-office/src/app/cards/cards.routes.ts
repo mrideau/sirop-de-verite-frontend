@@ -41,13 +41,13 @@ export default [
               config: {
                 key: 'no_alcohol',
                 type: 'select',
-                defaultValue: false,
+                defaultValue: true,
                 props: {
                   required: true,
                   label: 'Alcool',
                   options: [
-                    { value: true, label: 'Avec alcool' },
-                    { value: false, label: 'Sans alcool' },
+                    { value: true, label: 'Sans alcool' },
+                    { value: false, label: 'Avec alcool' },
                   ],
                 },
               },
